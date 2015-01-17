@@ -1,5 +1,24 @@
 # Core Ops Tutorial
 
+# Pre-requisites
+
+Build etcdctl and fleetctl:
+
+```
+go get github.com/coreos/etcd/etcdctl
+go get github.com/coreos/fleet/fleetctl
+```
+
+Build kubecfg:
+
+```
+git clone https://github.com/GoogleCloudPlatform/kubernetes
+make
+cp ./_output/local/bin/darwin/amd64/kubecfg ~/bin
+```
+
+Google Cloud SDK: https://cloud.google.com/sdk/
+
 # Provisioning CoreOS, etcd, fleet, and flannel
 
 ## Control Node
@@ -43,7 +62,7 @@ export FLEETCTL_TUNNEL="<control-external-ip>"
 ### Update configs
 
 ```
-sed -i "" -e 's/CONTROL-NODE-INTERNAL-IP/<control-internal-ip>/g' *
+sed -i "" -e 's/CONTROL-NODE-INTERNAL-IP/<control-internal-ip>/g' *.{json,yaml,service}
 ```
 
 ### Cluster Configuration
